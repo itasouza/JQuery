@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sintaxe do jQuery</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+    </head>
+    <body>
+
+        <input type="text" name="cep" placeholder="CEP" />
+        <button class="ajax-cep">Consultar</button>
+        <input type="text" name="logradouro" placeholder="Logradouro" />
+        <input type="text" name="complemento" placeholder="Complemento" />
+        <input type="text" name="bairro" placeholder="Bairro" />
+        <input type="text" name="localidade" placeholder="Localidade" />
+        <input type="text" name="uf" placeholder="UF" />
+
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript">
+
+
+            $(function() {
+
+
+                function showAlert(type, message) {
+                    toastr.options = {
+                        "closeButton": true,
+                        "positionClass": "toast-bottom-right",
+                        "hideDuration": "2000"
+                    }  
+                    toastr[type](message);
+                }
+
+
+                $(".ajax-cep").click(function() {
+                var cep = $("[name='cep']").val();
+                if (cep != null && cep != "" && cep.length == 8) {
+                    $.ajax({
+                    type: "GET",
+                    url: "//viacep.com.br/ws/" + cep + "/json/"
+                }).done(function(data) {
+                    console.info(data);
+                    if (data["erro"] != null && data["erro"] == true) {
+                        showAlert("error","CEP inválido");
+                    } else {
+                    $("[name='logradouro']").val(data["logradouro"]);
+                    $("[name='complemento']").val(data["complemento"]);
+                    $("[name='bairro']").val(data["bairro"]);
+                    $("[name='localidade']").val(data["localidade"]);
+                    $("[name='uf']").val(data["uf"]);
+                    showAlert("success","Busca realizda com sucesso");
+                    }
+                }).fail(function(error) {
+                    console.info(error);
+                    showAlert("error","Ocorreu um erro");
+                });
+                }
+            });
+            });
+
+
+        </script>
+
+    </body>
+</html>

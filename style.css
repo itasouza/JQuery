@@ -1,0 +1,23 @@
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    border: 1px solid black;
+    display: block;
+    margin: 5px;
+}
+
+.error{
+     border-color: red;
+ }
+
+.circulo{
+    border-radius: 50%;
+}
+
+label 
+{ 
+  display: block;
+};
+
+

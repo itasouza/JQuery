@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sintaxe do jQuery</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+    </head>
+    <body>
+        
+      <form method="post" action="#">
+        <label>Nome:</label>
+        <input type="text" name="nome" />
+        <label>Cidade:</label>
+        <input type="text" name="cidade" />
+        <label>Estado:</label>
+        <input type="text" name="estado" />
+            <br />
+
+        <button class="clear-form" type="button"> Limpar </button>
+        <button type="submit"> Enviar </button>
+
+        </form>
+           <ul class="events">
+        </ul>
+
+     
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+        <script type="text/javascript">
+            $(function(){
+               
+
+                $("form").submit(function(e){
+
+                     var nome = $(this).find("input[name = nome]");
+                     var cidade = $(this).find("input[name = cidade]");
+                     var estado = $(this).find("input[name = estado]");
+                      
+                     if($(nome).val() == null || $(nome).val() == ""){
+                         $(nome).addClass("error");
+                     } else{
+                         $(nome).removeClass("error");
+                     }
+
+                     if($(cidade).val() == null || $(cidade).val() == ""){
+                         $(cidade).addClass("error");
+                     } else{
+                         $(cidade).removeClass("error");
+                     }
+
+                     if($(estado).val() == null || $(estado).val() == ""){
+                         $(estado).addClass("error");
+                     } else{
+                         $(estado).removeClass("error");
+                     }
+
+                     if($(this).find(".error").length > 0){
+                         $(".error").first().focus();
+                         $(".events").prepend("<li>submit error</li>");
+                     }else{
+                         $(".events").prepend("<li>submit sucesso</li>");
+                     }
+
+                     $(".events").prepend("<li>submit</li>");  
+                     e.preventDefault();
+                     return false;
+                });
+
+          
+            });
+        
+        </script>
+
+    </body>
+</html>

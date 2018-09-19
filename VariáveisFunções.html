@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sintaxe do jQuery</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+    </head>
+    <body>
+        
+         
+        
+
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+      <!--
+          $(selector).action();
+          $ define o Jquery
+          selector busca de elemntos html
+          .action() ação
+
+       -->
+
+        <script type="text/javascript">
+            $(function() {
+                var numero = 1;
+                var text = "testando";
+                var numeroB = 5;
+
+                var result = numero * numeroB; 
+
+
+                var check = numero > numeroB;
+
+
+                
+                console.info(numero);
+                console.info(text);
+                console.info(result);
+                console.info(check);
+
+
+                function name(p1,p2,p3){
+                    //código da função
+                    return 0;
+                }
+
+
+                function Somarvalores(primeiro, segundo){
+                    return primeiro + segundo;
+                }
+
+                console.info(Somarvalores(4,7));
+                console.info(Somarvalores(3,3));
+                console.info(Somarvalores(9,0));
+
+                function Operacoes(Valor1,Valor2){
+                    var calculo = Valor1 - Valor2;
+                    return calculo;
+                }
+                console.info('Somando : ' + Operacoes(9,2));
+
+                function Divisao(Valor1,Valor2){
+                    var calculo = Valor1 % Valor2;
+                    return calculo;
+                }
+                //Sendo as variáveis A = 10 e B = 20, qual o resultado da expressão B % A?
+                console.info("Divisão :" + Divisao(20,10));
+
+                function Teste(Valor1, Valor2){
+                    return Valor1 >= Valor2;
+                }
+                console.info("Verificar :" + Teste(5,4));
+
+                function checkNumbers(n1, n2){
+                    return n1 == n2;
+                }
+                console.info("Verificar :" + checkNumbers(3,6));
+
+            });
+        </script>
+
+    </body>
+</html>

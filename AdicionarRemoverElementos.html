@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sintaxe do jQuery</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+    </head>
+    <body>
+        
+        <h2>
+            Titulo H2
+        </h2>
+
+        <ul class="list">
+            <li>Linha 1</li>
+            <li>Linha 2</li>
+        </ul>      
+        
+        <p>
+            Texto
+        </p>
+
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+      <!--
+          $(selector).action();
+          $ define o Jquery
+          selector busca de elemntos html
+          .action() ação
+
+       -->
+
+        <script type="text/javascript">
+            $(function() {
+               var valorInicial = $(".list li").length;
+
+               for (i = valorInicial + 1; i <= 10; i++){
+                  // var elemntoAdd = "<li> Linha " + i + "</li>";
+                   //adiciona no final
+                  // $(".list").append(elemntoAdd);
+                   //adiciona no inicio
+                   // $(".list").prepend(elemntoAdd);
+               }
+
+
+               function InseriElementos(valorinicial, maxValor){
+                   if(valorinicial >= maxValor){
+                       return;
+                   }
+
+                   for (i = valorinicial + 1; i <= maxValor; i++){
+                     var elemntoAdd = "<li> Linha " + i + "</li>";
+                     $(".list").append(elemntoAdd);
+                   }
+               }
+
+               InseriElementos(valorInicial, 20);
+               //adicinar antes
+              $("h2").before("<h1> Titulo H1 </h1>");
+              //adiciona depois
+              $("h2").after("<h1> Titulo H3 </h1>");
+              //remove elemento
+              $("p").remove();
+
+       
+
+            });
+
+
+        </script>
+
+    </body>
+</html>

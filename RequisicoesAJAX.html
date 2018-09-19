@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sintaxe do jQuery</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+    </head>
+    <body>
+        
+
+            <button class="ajax-get">Consultar GET</button>
+            <form class="ajax-post" method="POST" action="https://cors-test.appspot.com/test">
+            <input type="text" name="name" />
+            <input type="text" name="user" />
+            <button type="submit">Postar</button>
+            </form>
+            <div class="results"></div>
+
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript">
+            $(function() {
+
+              $(".ajax-get").click(function(){
+                 $.ajax({
+                     type:"GET",
+                     url:"https://cors-test.appspot.com/test"
+                 }).done(function(data){
+                    console.info(data);
+                   $(".results").html("<p>" + data["status"] + "</p>");
+                 });
+              });
+
+
+             $(".ajax-post").submit(function(e){
+                 var form = $(this);
+                 e.preventDefault();
+                 $.ajax({
+                     type:$(form).attr("method"),
+                     url: $(form).attr("action"),
+                     data: $(form).serialize()
+                 }).done(function(data){
+                    console.info(data);
+                    $(".results").append("<p>" + data["status"] + "</p>");
+                 });
+             });
+
+
+
+            });
+        </script>
+
+    </body>
+</html>
